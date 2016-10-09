@@ -9,6 +9,38 @@ package ist412group6project;
  *
  * @author gme50
  */
-public class UserAccount {
+public abstract class UserAccount {
     
+    
+    private String username = "";
+    private char[] password = null;
+    
+     public UserAccount(){
+        
+    }
+    
+
+    
+    public UserAccount(String newUsername, char[] newPassword){
+        username = newUsername;
+        password = newPassword;
+    }
+    
+  
+    public String getUsername(){
+        return username;
+    }
+    
+    public char[] getPassword(){
+        return password;
+    }
+    
+    
+    public abstract boolean authenticate(String unToCheck, char[] pwTocheck);
+
+    
+
+
 }
+    
+
