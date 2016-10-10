@@ -38,7 +38,7 @@ public class LoginCntl {
          if(getUserList().authenticate(theUsername, thePassword)){
             System.out.println("Authenticated!" );
             theLoginUI.setVisible(false);
-            NavCntl theNavCntl = new NavCntl();
+            NavCntl theNavCntl = new NavCntl(theUsername);
             authenticated = true;
         }
         return authenticated;

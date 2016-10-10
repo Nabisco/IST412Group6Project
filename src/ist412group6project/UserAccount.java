@@ -14,6 +14,8 @@ public abstract class UserAccount {
     
     private String username = "";
     private char[] password = null;
+    private ExpenseCalender expenceCallender = null;
+    
     
      public UserAccount(){
         
@@ -24,6 +26,7 @@ public abstract class UserAccount {
     public UserAccount(String newUsername, char[] newPassword){
         username = newUsername;
         password = newPassword;
+        expenceCallender = new ExpenseCalender("Checking");
     }
     
   
@@ -37,6 +40,20 @@ public abstract class UserAccount {
     
     
     public abstract boolean authenticate(String unToCheck, char[] pwTocheck);
+
+    /**
+     * @return the expenceCallender
+     */
+    public ExpenseCalender getExpenceCallender() {
+        return expenceCallender;
+    }
+
+    /**
+     * @param expenceCallender the expenceCallender to set
+     */
+    public void setExpenceCallender(ExpenseCalender expenceCallender) {
+        this.expenceCallender = expenceCallender;
+    }
 
     
 

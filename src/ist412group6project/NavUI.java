@@ -15,14 +15,15 @@ public class NavUI extends javax.swing.JFrame {
      * Creates new form NavUI
      */
     
+    
     private NavCntl parentNavCntl = null;
     
     public NavUI() {
         initComponents();
     }
 
-         public NavUI(NavCntl theNavCntl) {
-         super("Cash Flow Main Menu");
+    public NavUI(NavCntl theNavCntl) {
+        super("Cash Flow Main Menu");
         parentNavCntl = theNavCntl;
         initComponents();
     }
@@ -129,7 +130,7 @@ public class NavUI extends javax.swing.JFrame {
     }//GEN-LAST:event_budgetBtnActionPerformed
 
     private void userProfileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userProfileBtnActionPerformed
-        // TODO add your handling code here:
+        parentNavCntl.NavToUserProfile();// TODO add your handling code here:
     }//GEN-LAST:event_userProfileBtnActionPerformed
 
     /**

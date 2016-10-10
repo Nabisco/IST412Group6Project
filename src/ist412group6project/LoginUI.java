@@ -258,8 +258,8 @@ public class LoginUI extends javax.swing.JFrame {
           
          String tmpUsername = this.jTextField1.getText();
         char[] tmpPassword = this.jPasswordField1.getPassword();
-        if(this.parentLoginCntl.requestAuthenticate(tmpUsername, tmpPassword)){
-            NavCntl theNavCntl = new NavCntl();
+        if(this.parentLoginCntl.requestAuthenticate(tmpUsername, tmpPassword)){ 
+            
         }else{
             JOptionPane.showMessageDialog(this, "Email or Password Are Incorrect");
             this.jTextField1.setText("");

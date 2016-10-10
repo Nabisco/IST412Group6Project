@@ -12,15 +12,28 @@ package ist412group6project;
 public class NavCntl {
     
     NavUI theNavUI =null;
+    String currentUser;
     
+    public NavCntl(String loggedInUser){
+        currentUser = loggedInUser;
+        createNavUI();
     
-    public NavCntl(){
+    }
     
-   theNavUI = new NavUI(this);
-   theNavUI.setLocationRelativeTo(null);
-   theNavUI.setVisible(true);
+    public void createNavUI() {
+        theNavUI = new NavUI(this);
+        theNavUI.setLocationRelativeTo(null);
+        showNavControl();
+        
+    }
     
-    
+    public void showNavControl() {
+        theNavUI.setVisible(true);
+    }
+
+    public void NavToUserProfile() {
+        UserProfileCntl theUserProfileCntl = new UserProfileCntl(this, currentUser);
+        theNavUI.setVisible(false);
     }
     
     

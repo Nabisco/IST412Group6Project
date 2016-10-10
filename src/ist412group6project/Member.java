@@ -18,6 +18,8 @@ public class Member extends UserAccount {
     
       public Member(String newUsername, char[] newPassword){
         super(newUsername, newPassword);
+        
+        
     }
     
     public boolean authenticate(String username, char[] pwToCheck){
