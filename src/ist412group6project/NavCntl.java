@@ -36,5 +36,12 @@ public class NavCntl {
         theNavUI.setVisible(false);
     }
     
+    public void navToBudgetStatistics(){
+        BudgetStatisticsCntrl theBudgetStatistics = new BudgetStatisticsCntrl(this);
+        theBudgetStatistics.navToBudgetStatistics();
+        theNavUI.setVisible(false);
+    }
+            
+    
     
 }

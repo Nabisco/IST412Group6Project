@@ -122,7 +122,7 @@ public class NavUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newExpenseBtnActionPerformed
 
     private void expenseSummaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expenseSummaryBtnActionPerformed
-        // TODO add your handling code here:
+        parentNavCntl.navToBudgetStatistics();// TODO add your handling code here:
     }//GEN-LAST:event_expenseSummaryBtnActionPerformed
 
     private void budgetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetBtnActionPerformed
