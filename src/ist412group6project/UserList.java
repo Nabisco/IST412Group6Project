@@ -16,8 +16,7 @@ public class UserList {
     
     private ArrayList<UserAccount> listOfUsers = null;
     
-    public UserList(){
-        
+    public UserList(){  
        // Create the users and add them to the arraylist
        listOfUsers = new ArrayList();
        for(int i = 0; i < 5; i++){
@@ -26,11 +25,7 @@ public class UserList {
            Member newMember  = new Member (testUsername, testPassword);
            listOfUsers.add(newMember);
        }
-       
-       
- 
-        
-      
+
     }
     
       public ArrayList<UserAccount> getListOfUsers(){
