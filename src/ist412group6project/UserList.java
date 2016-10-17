@@ -31,6 +31,16 @@ public class UserList {
       public ArrayList<UserAccount> getListOfUsers(){
         return listOfUsers;
     }
+      
+      public UserAccount getCurrentUser(String userName) {
+          UserAccount userAccountToPass = null;
+          for(UserAccount uA : listOfUsers) {
+              if(uA.getUsername().equals(userName)) {
+                  userAccountToPass = uA;
+              }
+          }
+          return userAccountToPass;
+      }
     
     public boolean authenticate(String username2check, char[] password2check){
         boolean authenticated = false;

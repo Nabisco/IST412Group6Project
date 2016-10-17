@@ -33,14 +33,18 @@ public class LoginCntl {
     
     return theUserList;
     }
- protected boolean requestAuthenticate(String theUsername, char[] thePassword){
+    
+    protected boolean requestAuthenticate(String theUsername, char[] thePassword){
         boolean authenticated = false;
         
         
          if(getUserList().authenticate(theUsername, thePassword)){
             System.out.println("Authenticated!" );
             theLoginUI.setVisible(false);
-            NavCntl theNavCntl = new NavCntl(theUsername);
+            
+            UserAccount currentUser = getUserList().getCurrentUser(theUsername);
+            
+            NavCntl theNavCntl = new NavCntl(currentUser);
             authenticated = true;
         }
         return authenticated;

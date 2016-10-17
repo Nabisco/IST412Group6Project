@@ -12,9 +12,9 @@ package ist412group6project;
 public class NavCntl {
     
     NavUI theNavUI =null;
-    String currentUser;
+    UserAccount currentUser;
     
-    public NavCntl(String loggedInUser){
+    public NavCntl(UserAccount loggedInUser){
         currentUser = loggedInUser;
         createNavUI();
     
@@ -41,7 +41,5 @@ public class NavCntl {
         theBudgetStatistics.navToBudgetStatistics();
         theNavUI.setVisible(false);
     }
-            
-    
-    
+
 }

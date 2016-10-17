@@ -12,6 +12,7 @@ package ist412group6project;
 public class UserProfileUI extends javax.swing.JFrame {
 
     private UserProfileCntl parentUserProfileCntl;
+    private UserAccount theUser;
     
     /**
      * Creates new form UserProfileUI
@@ -20,10 +21,12 @@ public class UserProfileUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    public UserProfileUI(UserProfileCntl theParentUICntl, String userName) {
+    public UserProfileUI(UserProfileCntl theParentUICntl, UserAccount userName) {
         parentUserProfileCntl = theParentUICntl;
+        theUser = userName;
         initComponents();
-        userNameTextField.setText(userName);
+        userNameTextField.setText(userName.getUsername());
+        UserAccountTotalField.setText(String.valueOf(userName.getUserAccountTotal()));
     }
 
     /**
@@ -40,6 +43,9 @@ public class UserProfileUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         userNameTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        UserAccountTotalField = new javax.swing.JTextField();
+        editButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,26 +66,50 @@ public class UserProfileUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Account Total:");
+
+        UserAccountTotalField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UserAccountTotalFieldActionPerformed(evt);
+            }
+        });
+
+        editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(homeBtn))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(selectBtn)
-                        .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(homeBtn))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(selectBtn)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addContainerGap(26, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(UserAccountTotalField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addContainerGap(26, Short.MAX_VALUE))))
+                        .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,7 +119,12 @@ public class UserProfileUI extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(UserAccountTotalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(homeBtn)
                     .addComponent(selectBtn))
@@ -106,6 +141,20 @@ public class UserProfileUI extends javax.swing.JFrame {
     private void userNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userNameTextFieldActionPerformed
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        try{
+         double newAccountTotal = Double.parseDouble(UserAccountTotalField.getText());
+         theUser.setUserAccountTotal(newAccountTotal);
+        } catch(NumberFormatException e) {
+            //not an integer
+        }
+        
+    }//GEN-LAST:event_editButtonActionPerformed
+
+    private void UserAccountTotalFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserAccountTotalFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UserAccountTotalFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,9 +192,12 @@ public class UserProfileUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField UserAccountTotalField;
+    private javax.swing.JButton editButton;
     private javax.swing.JButton homeBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton selectBtn;
     private javax.swing.JTextField userNameTextField;
     // End of variables declaration//GEN-END:variables

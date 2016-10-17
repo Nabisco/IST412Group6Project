@@ -15,6 +15,7 @@ public abstract class UserAccount {
     private String username = "";
     private char[] password = null;
     private ExpenseCalender expenceCallender = null;
+    private double userAccountTotal;
     
     
      public UserAccount(){
@@ -27,6 +28,7 @@ public abstract class UserAccount {
         username = newUsername;
         password = newPassword;
         expenceCallender = new ExpenseCalender("Checking");
+        userAccountTotal = 0.00;
     }
     
   
@@ -53,6 +55,20 @@ public abstract class UserAccount {
      */
     public void setExpenceCallender(ExpenseCalender expenceCallender) {
         this.expenceCallender = expenceCallender;
+    }
+
+    /**
+     * @return the userAccountTotal
+     */
+    public double getUserAccountTotal() {
+        return userAccountTotal;
+    }
+
+    /**
+     * @param userAccountTotal the userAccountTotal to set
+     */
+    public void setUserAccountTotal(double userAccountTotal) {
+        this.userAccountTotal = userAccountTotal;
     }
 
     

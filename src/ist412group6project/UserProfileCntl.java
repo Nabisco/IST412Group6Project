@@ -13,16 +13,17 @@ public class UserProfileCntl {
     
     private NavCntl parentNavCntl;
     private UserProfileUI userProfileUI;
+    
 
-    public UserProfileCntl(NavCntl theNavCntl, String userName) {
+    public UserProfileCntl(NavCntl theNavCntl, UserAccount userName) {
         parentNavCntl = theNavCntl;
         navToUserUserProfileUI(userName);
     }
     
     
 
-    public void navToUserUserProfileUI(String userName) {
-        
+    public void navToUserUserProfileUI(UserAccount userName) {
+//        UserAccount currentUser 
         userProfileUI = new UserProfileUI(this, userName);
         userProfileUI.setVisible(true);
         userProfileUI.setLocationRelativeTo(null);
