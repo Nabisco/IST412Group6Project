@@ -32,7 +32,9 @@ public class UserProfileCntl {
     
     public void navBackToMainMenu() {
         userProfileUI.dispose();
+        parentNavCntl.updateAccountTotValue();
         parentNavCntl.showNavControl();
+        
         
     }
     

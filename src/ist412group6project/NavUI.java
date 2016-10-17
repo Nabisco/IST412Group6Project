@@ -17,18 +17,25 @@ public class NavUI extends javax.swing.JFrame {
      * Creates new form NavUI
      */
     
-    
+    private UserAccount userAccount;
     private NavCntl parentNavCntl = null;
     
     public NavUI() {
         initComponents();
     }
 
-    public NavUI(NavCntl theNavCntl) {
+    public NavUI(NavCntl theNavCntl, UserAccount userAcc) {
         super("Cash Flow Main Menu");
         this.getContentPane().setBackground(Color.white);
         parentNavCntl = theNavCntl;
+        userAccount = userAcc;
         initComponents();
+        updateAccountTotValue();
+        
+    }
+    
+    public void updateAccountTotValue() {
+        accountTotValue.setText(Double.toString(userAccount.getUserAccountTotal()));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,14 +52,16 @@ public class NavUI extends javax.swing.JFrame {
         expenseSummaryBtn = new javax.swing.JButton();
         budgetBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        accountTotLabel = new javax.swing.JLabel();
+        accountTotValue = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
         jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(300, 450));
-        setPreferredSize(new java.awt.Dimension(300, 455));
+        setMinimumSize(new java.awt.Dimension(450, 500));
+        setPreferredSize(new java.awt.Dimension(450, 500));
 
         newExpenseBtn.setBackground(new java.awt.Color(204, 255, 204));
         newExpenseBtn.setText("New Expense");
@@ -95,6 +104,11 @@ public class NavUI extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ist412group6project/CashFlow.PNG"))); // NOI18N
 
+        accountTotLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        accountTotLabel.setText("User Account Total: $");
+
+        accountTotValue.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ist412group6project/bars.png"))); // NOI18N
@@ -112,9 +126,16 @@ public class NavUI extends javax.swing.JFrame {
             .addComponent(newExpenseBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(budgetBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jLabel1)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(accountTotLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(accountTotValue, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +150,11 @@ public class NavUI extends javax.swing.JFrame {
                 .addComponent(newExpenseBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(budgetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(accountTotLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(accountTotValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -187,6 +212,8 @@ public class NavUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel accountTotLabel;
+    private javax.swing.JLabel accountTotValue;
     private javax.swing.JButton budgetBtn;
     private javax.swing.JButton expenseSummaryBtn;
     private javax.swing.JButton jButton3;

@@ -21,7 +21,7 @@ public class NavCntl {
     }
     
     public void createNavUI() {
-        theNavUI = new NavUI(this);
+        theNavUI = new NavUI(this, currentUser);
         theNavUI.setLocationRelativeTo(null);
         showNavControl();
         
@@ -40,6 +40,10 @@ public class NavCntl {
         BudgetStatisticsCntrl theBudgetStatistics = new BudgetStatisticsCntrl(this);
         theBudgetStatistics.navToBudgetStatistics();
         theNavUI.setVisible(false);
+    }
+    
+    public void updateAccountTotValue() {
+        theNavUI.updateAccountTotValue();
     }
 
 }
