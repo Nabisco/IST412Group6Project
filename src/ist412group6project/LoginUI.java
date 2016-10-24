@@ -216,10 +216,7 @@ public class LoginUI extends javax.swing.JFrame {
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         // TODO add your handling code here:
         
-        if(jTextField1.getText().length()> 0 && jTextField1.getText().indexOf('@')>=0){
-            jButton1.setEnabled(true);
-        }
-        else{jButton1.setEnabled(false);}
+       
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
@@ -229,10 +226,7 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void jTextField1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseEntered
         // TODO add your handling code here:
-         if(jTextField1.getText().length()> 0){
-            jButton1.setEnabled(true);
-        }
-        else{jButton1.setEnabled(false);}
+         
     }//GEN-LAST:event_jTextField1MouseEntered
 
     private void jPasswordField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyReleased
