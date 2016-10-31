@@ -5,13 +5,14 @@
  */
 package ist412group6project;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  *
  * @author Liam
  */
-public class Member extends UserAccount {
+public class Member extends UserAccount implements Serializable{
     
     
     

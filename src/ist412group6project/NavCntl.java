@@ -13,8 +13,10 @@ public class NavCntl {
     
     NavUI theNavUI =null;
     UserAccount currentUser;
+    Serialize theSerialization;
     
-    public NavCntl(UserAccount loggedInUser){
+    public NavCntl(UserAccount loggedInUser, Serialize serialization) {
+        theSerialization = serialization;
         currentUser = loggedInUser;
         createNavUI();
     
@@ -43,6 +45,7 @@ public class NavCntl {
     }
     
     public void updateAccountTotValue() {
+//        theSerialization.serializeObject(currentUser);
         theNavUI.updateAccountTotValue();
     }
 

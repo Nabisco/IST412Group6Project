@@ -15,20 +15,24 @@ public class LoginCntl {
     
     private LoginUI theLoginUI = null;
     private UserList theUserList = null;
+    private Serialize theSerialization = null;
     
-    public  LoginCntl(){
-
+    public  LoginCntl(Serialize serialization){
+        theSerialization = serialization;
         theLoginUI = new LoginUI(this);
         theLoginUI.setLocationRelativeTo(null);
         theLoginUI.setVisible(true);
         theLoginUI.setSize(300, 450);
+        
 }
-    
+
+  
     public UserList getUserList(){
-    if(theUserList == null){
+        
+        if(theUserList == null){
     
-    theUserList=new UserList();
- 
+        theUserList = new UserList(theSerialization);
+//        theSerialization.serializeObject(theUserList);
     }
     
     return theUserList;
@@ -44,7 +48,7 @@ public class LoginCntl {
             
             UserAccount currentUser = getUserList().getCurrentUser(theUsername);
             
-            NavCntl theNavCntl = new NavCntl(currentUser);
+            NavCntl theNavCntl = new NavCntl(currentUser, theSerialization);
             authenticated = true;
         }
         return authenticated;

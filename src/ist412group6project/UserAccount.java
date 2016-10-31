@@ -5,16 +5,18 @@
  */
 package ist412group6project;
 
+import java.io.Serializable;
+
 /**
  *
  * @author gme50
  */
-public abstract class UserAccount {
+public abstract class UserAccount implements Serializable{
     
     
     private String username = "";
     private char[] password = null;
-    private ExpenseCalender expenceCallender = null;
+    //private ExpenseCalender expenceCallender = null;
     private double userAccountTotal;
     
     
@@ -27,7 +29,7 @@ public abstract class UserAccount {
     public UserAccount(String newUsername, char[] newPassword){
         username = newUsername;
         password = newPassword;
-        expenceCallender = new ExpenseCalender("Checking");
+        //expenceCallender = new ExpenseCalender("Checking");
         userAccountTotal = 0.00;
     }
     
@@ -46,16 +48,16 @@ public abstract class UserAccount {
     /**
      * @return the expenceCallender
      */
-    public ExpenseCalender getExpenceCallender() {
-        return expenceCallender;
-    }
-
-    /**
-     * @param expenceCallender the expenceCallender to set
-     */
-    public void setExpenceCallender(ExpenseCalender expenceCallender) {
-        this.expenceCallender = expenceCallender;
-    }
+//    public ExpenseCalender getExpenceCallender() {
+//        return expenceCallender;
+//    }
+//
+//    /**
+//     * @param expenceCallender the expenceCallender to set
+//     */
+//    public void setExpenceCallender(ExpenseCalender expenceCallender) {
+//        this.expenceCallender = expenceCallender;
+//    }
 
     /**
      * @return the userAccountTotal

@@ -16,7 +16,8 @@ public class IST412Group6Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        LoginCntl theLoginCntl = new LoginCntl();
+        Serialize serialization = new Serialize();
+        LoginCntl theLoginCntl = new LoginCntl(serialization);
         
         //
     }

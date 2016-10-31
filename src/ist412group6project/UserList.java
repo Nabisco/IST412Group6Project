@@ -5,28 +5,65 @@
  */
 package ist412group6project;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Liam
  */
-public class UserList {
+public class UserList implements Serializable{
     
     
-    private ArrayList<UserAccount> listOfUsers = null;
+    private ArrayList<UserAccount> listOfUsers = new ArrayList<>();
+    Serialize theSerialization;
+    Member theUser;
     
-    public UserList(){  
-       // Create the users and add them to the arraylist
-       listOfUsers = new ArrayList();
-       for(int i = 0; i < 5; i++){
-           String testUsername = "example"+i+"@email.com";
-           char[] testPassword = {'p', 'a', 's', 's'};
-           Member newMember  = new Member (testUsername, testPassword);
-           listOfUsers.add(newMember);
-       }
+    public UserList(Serialize serialization){  
+       theSerialization = serialization;
 
+        if (listOfUsers.isEmpty()) {
+          createTestAccounts(); 
+//        theSerialization.serializeObject(listOfUsers);
+       }
     }
+
+    private void createTestAccounts() {
+//        char[] testSerializedPassword = {'p', 'a', 's', 's'};
+//        Member serializedAccount = new Member("example1@email.com", testSerializedPassword);
+//        try {
+//            theUser = theSerialization.deserializeObject("theUser");
+//            if(theUser != null) {
+//                listOfUsers.add(theUser);
+//            }
+//            if(!listOfUsers.isEmpty()) { 
+//                System.out.println("List of users populated");
+//            }
+//            else {
+//                System.out.println("List of users NOT populated");
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Failed");
+//        }
+
+        // Create the users and add them to the arraylist
+        if(listOfUsers.isEmpty()) {
+           String testUsername = "example1@email.com";
+           char[] testPassword = {'p', 'a', 's', 's'};
+           theUser = new Member (testUsername, testPassword);
+//           theSerialization.serializeObject(theUser);
+           listOfUsers.add(theUser);
+//           String testUsername2 = "example2@email.com";
+//           char[] testPassword2 = {'p', 'a', 's', 's'};
+//           Member newMember2  = new Member (testUsername, testPassword);
+////         theSerialization.serializeObject(newMember);
+//           listOfUsers.add(newMember2);
+
+        } 
+    }
+       
+       
+    
     
       public ArrayList<UserAccount> getListOfUsers(){
         return listOfUsers;
