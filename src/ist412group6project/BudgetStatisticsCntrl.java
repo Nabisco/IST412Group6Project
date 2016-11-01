@@ -12,10 +12,11 @@ package ist412group6project;
 public class BudgetStatisticsCntrl {
     private NavCntl parentNavCntl;
     private BudgetStatistics budgetStatisticsUI;
+    
 
-    public BudgetStatisticsCntrl(NavCntl theNavCntl) {
+    public BudgetStatisticsCntrl(NavCntl theNavCntl, UserAccount theUser) {
         parentNavCntl = theNavCntl;
-        budgetStatisticsUI = new BudgetStatistics(this);
+        budgetStatisticsUI = new BudgetStatistics(this, theUser);
         
         
     }

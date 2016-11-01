@@ -20,9 +20,10 @@ public class BudgetStatistics extends javax.swing.JFrame {
         initComponents();
     }
 
-    BudgetStatistics(BudgetStatisticsCntrl aThis) {
+    BudgetStatistics(BudgetStatisticsCntrl aThis, UserAccount theUser) {
         parentCntl = aThis;
         initComponents();
+        jLabel5.setText(Double.toString(theUser.getUserAccountTotal()));
     }
 
     /**

@@ -39,13 +39,13 @@ public class NavCntl {
     }
     
     public void navToBudgetStatistics(){
-        BudgetStatisticsCntrl theBudgetStatistics = new BudgetStatisticsCntrl(this);
+        BudgetStatisticsCntrl theBudgetStatistics = new BudgetStatisticsCntrl(this, currentUser);
         theBudgetStatistics.navToBudgetStatistics();
         theNavUI.setVisible(false);
     }
     
     public void updateAccountTotValue() {
-//        theSerialization.serializeObject(currentUser);
+        theSerialization.serializeObject(currentUser);
         theNavUI.updateAccountTotValue();
     }
 

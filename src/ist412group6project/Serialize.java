@@ -58,53 +58,53 @@ public class Serialize {
         }
     }
     
-//    public boolean checkForSerializedData(){
-//        
-//        return false;
-//    }
-//    public void serializeObject(Object o) {
-//        try {
-//            outputStream.writeObject(o);
-//        } catch (IOException ex) {
-//            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-//            System.out.println("Failed");
-//        }
-//    }
-//    
-//    public Member deserializeObject(String u) {
-//        Member ua = null;
-//        try {
-//            ua = (Member)inputStream.readObject();
-//        } catch (IOException | ClassNotFoundException ex) {
-//            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return ua;
-//        
-//    }
-//    
-//     public Object deserializeObject(Object o, UserList ul) {
-//        try {
-//            o = (UserList)inputStream.readObject();
-//        } catch (IOException | ClassNotFoundException ex) {
-//            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return o;
-//        
-//    }
-//     
-//     public ArrayList deserializeObject(ArrayList al) {
-//        ArrayList alf = new ArrayList<UserAccount>();
-//         try {
-//            while(inputStream.available() > 0) {
-//                alf = (ArrayList)inputStream.readObject();
-//            }
-//        } catch (IOException | ClassNotFoundException ex) {
-//            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return alf;
-//        
-//    }
-//     
-//     
+    public boolean checkForSerializedData(){
+        
+        return false;
+    }
+    public void serializeObject(Object o) {
+        try {
+            outputStream.writeObject(o);
+        } catch (IOException ex) {
+            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Failed");
+        }
+    }
+    
+    public Member deserializeObject(String u) {
+        Member ua = null;
+        try {
+            ua = (Member)inputStream.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ua;
+        
+    }
+    
+     public Object deserializeObject(Object o, UserList ul) {
+        try {
+            o = (UserList)inputStream.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return o;
+        
+    }
+     
+     public ArrayList deserializeObject(ArrayList al) {
+        ArrayList alf = new ArrayList<UserAccount>();
+         try {
+            while(inputStream.available() > 0) {
+                alf = (ArrayList)inputStream.readObject();
+            }
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return alf;
+        
+    }
+     
+     
     
 }

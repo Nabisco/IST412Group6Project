@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Liam
  */
-public class UserList implements Serializable{
+public class UserList implements Serializable {
     
     
     private ArrayList<UserAccount> listOfUsers = new ArrayList<>();
@@ -29,29 +29,29 @@ public class UserList implements Serializable{
     }
 
     private void createTestAccounts() {
-//        char[] testSerializedPassword = {'p', 'a', 's', 's'};
-//        Member serializedAccount = new Member("example1@email.com", testSerializedPassword);
-//        try {
-//            theUser = theSerialization.deserializeObject("theUser");
-//            if(theUser != null) {
-//                listOfUsers.add(theUser);
-//            }
-//            if(!listOfUsers.isEmpty()) { 
-//                System.out.println("List of users populated");
-//            }
-//            else {
-//                System.out.println("List of users NOT populated");
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Failed");
-//        }
+        char[] testSerializedPassword = {'p', 'a', 's', 's'};
+        Member serializedAccount = new Member("example1@email.com", testSerializedPassword);
+        try {
+            theUser = theSerialization.deserializeObject("theUser");
+            if(theUser != null) {
+                listOfUsers.add(theUser);
+            }
+            if(!listOfUsers.isEmpty()) { 
+                System.out.println("List of users populated");
+            }
+            else {
+                System.out.println("List of users NOT populated");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed");
+        }
 
         // Create the users and add them to the arraylist
         if(listOfUsers.isEmpty()) {
            String testUsername = "example1@email.com";
            char[] testPassword = {'p', 'a', 's', 's'};
            theUser = new Member (testUsername, testPassword);
-//           theSerialization.serializeObject(theUser);
+           theSerialization.serializeObject(theUser);
            listOfUsers.add(theUser);
 //           String testUsername2 = "example2@email.com";
 //           char[] testPassword2 = {'p', 'a', 's', 's'};
