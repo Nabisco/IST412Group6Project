@@ -5,14 +5,17 @@
  */
 package ist412group6project;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Liam
  */
-public class UserList implements Serializable {
+public class UserList {
     
     
     private ArrayList<UserAccount> listOfUsers = new ArrayList<>();
@@ -24,41 +27,46 @@ public class UserList implements Serializable {
 
         if (listOfUsers.isEmpty()) {
           createTestAccounts(); 
-//        theSerialization.serializeObject(listOfUsers);
        }
     }
 
     private void createTestAccounts() {
-        char[] testSerializedPassword = {'p', 'a', 's', 's'};
-        Member serializedAccount = new Member("example1@email.com", testSerializedPassword);
-        try {
-            theUser = theSerialization.deserializeObject("theUser");
-            if(theUser != null) {
-                listOfUsers.add(theUser);
-            }
-            if(!listOfUsers.isEmpty()) { 
-                System.out.println("List of users populated");
-            }
-            else {
-                System.out.println("List of users NOT populated");
-            }
-        } catch (Exception e) {
-            System.out.println("Failed");
-        }
-
+        
         // Create the users and add them to the arraylist
+        try {
+            theSerialization.openInputStream();
+            Object o;
+            while((o = theSerialization.inputStream.readObject()) != null) {
+                UserAccount savedUser = (UserAccount)o;
+                listOfUsers.add(savedUser);
+                
+            }
+                theSerialization.closeInputStream();
+            } catch (IOException | ClassNotFoundException ex) {
+                Logger.getLogger(UserList.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
         if(listOfUsers.isEmpty()) {
+           
            String testUsername = "example1@email.com";
            char[] testPassword = {'p', 'a', 's', 's'};
-           theUser = new Member (testUsername, testPassword);
-           theSerialization.serializeObject(theUser);
-           listOfUsers.add(theUser);
-//           String testUsername2 = "example2@email.com";
-//           char[] testPassword2 = {'p', 'a', 's', 's'};
-//           Member newMember2  = new Member (testUsername, testPassword);
-////         theSerialization.serializeObject(newMember);
-//           listOfUsers.add(newMember2);
-
+           Member one = new Member (testUsername, testPassword);
+           listOfUsers.add(one);
+           
+           String testUsername2 = "example2@email.com";
+           char[] testPassword2 = {'p', 'a', 's', 's'};
+           Member two = new Member (testUsername, testPassword);
+           listOfUsers.add(two);
+           
+           theSerialization.openOutputStream();
+           for(UserAccount ua : listOfUsers) {
+               try {
+                   theSerialization.outputStream.writeObject(ua);
+               } catch (IOException ex) {
+                   Logger.getLogger(UserList.class.getName()).log(Level.SEVERE, null, ex);
+               }
+           }
+           theSerialization.closeOutputStream();
         } 
     }
        

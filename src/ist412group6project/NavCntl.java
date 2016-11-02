@@ -5,6 +5,11 @@
  */
 package ist412group6project;
 
+import java.io.EOFException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Liam
@@ -45,7 +50,14 @@ public class NavCntl {
     }
     
     public void updateAccountTotValue() {
-        theSerialization.serializeObject(currentUser);
+        try {
+            theSerialization.openOutputStream();
+                theSerialization.outputStream.writeObject(currentUser);
+                theSerialization.closeOutputStream();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(NavCntl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         theNavUI.updateAccountTotValue();
     }
 

@@ -22,22 +22,25 @@ import java.util.logging.Logger;
 public class Serialize {
     
     private FileOutputStream fos;
-    FileInputStream fis;
-    private ObjectOutputStream outputStream;
-    private ObjectInputStream inputStream;
+    private FileInputStream fis;
+    public ObjectOutputStream outputStream;
+    public ObjectInputStream inputStream;
     
     public Serialize() {
+         
         
+        
+        
+        
+        
+        
+        
+    }
+    
+    public void openOutputStream() {
         //Create file output stream
-        try {
+       try {
             fos = new FileOutputStream("C:\\Users\\gme50\\Documents\\NetBeansProjects\\IST412Group6Project\\data.ser");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //Create file input stream
-        try {
-            fis = new FileInputStream("C:\\Users\\gme50\\Documents\\NetBeansProjects\\IST412Group6Project\\data.ser");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -50,6 +53,25 @@ public class Serialize {
             Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+    }
+    
+    public void closeOutputStream() {
+        try {
+            outputStream.close();
+        } catch (IOException ex) {
+            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void openInputStream() {
+        
+        //Create file input stream
+        try {
+            fis = new FileInputStream("C:\\Users\\gme50\\Documents\\NetBeansProjects\\IST412Group6Project\\data.ser");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         //Create object input stream
         try {
             inputStream = new ObjectInputStream(fis);
@@ -58,53 +80,11 @@ public class Serialize {
         }
     }
     
-    public boolean checkForSerializedData(){
-        
-        return false;
-    }
-    public void serializeObject(Object o) {
+    public void closeInputStream() {
         try {
-            outputStream.writeObject(o);
+            inputStream.close();
         } catch (IOException ex) {
             Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Failed");
         }
     }
-    
-    public Member deserializeObject(String u) {
-        Member ua = null;
-        try {
-            ua = (Member)inputStream.readObject();
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return ua;
-        
-    }
-    
-     public Object deserializeObject(Object o, UserList ul) {
-        try {
-            o = (UserList)inputStream.readObject();
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return o;
-        
-    }
-     
-     public ArrayList deserializeObject(ArrayList al) {
-        ArrayList alf = new ArrayList<UserAccount>();
-         try {
-            while(inputStream.available() > 0) {
-                alf = (ArrayList)inputStream.readObject();
-            }
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return alf;
-        
-    }
-     
-     
-    
 }

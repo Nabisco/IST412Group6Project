@@ -5,6 +5,10 @@
  */
 package ist412group6project;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Liam
@@ -29,11 +33,11 @@ public class LoginCntl {
   
     public UserList getUserList(){
         
-        if(theUserList == null){
-    
-        theUserList = new UserList(theSerialization);
-//        theSerialization.serializeObject(theUserList);
-    }
+        if(theUserList == null) {
+            
+            theUserList = new UserList(theSerialization);
+            
+        }
     
     return theUserList;
     }

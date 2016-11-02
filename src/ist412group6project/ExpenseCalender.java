@@ -5,6 +5,7 @@
  */
 package ist412group6project;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,7 +13,7 @@ import java.util.HashMap;
  *
  * @author gme50
  */
-public class ExpenseCalender {
+public class ExpenseCalender implements Serializable{
     private HashMap<String, HashMap<Integer, ArrayList<Double>>> year; //outer key is for month, nested hashmap contains a keyset of dates and an arraylist of expenses
     private String userAccount;
 
