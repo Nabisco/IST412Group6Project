@@ -40,7 +40,7 @@ public class Serialize {
     public void openOutputStream() {
         //Create file output stream
        try {
-            fos = new FileOutputStream("C:\\Users\\gme50\\Documents\\NetBeansProjects\\IST412Group6Project\\data.ser");
+            fos = new FileOutputStream("data.ser");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -67,7 +67,7 @@ public class Serialize {
         
         //Create file input stream
         try {
-            fis = new FileInputStream("C:\\Users\\gme50\\Documents\\NetBeansProjects\\IST412Group6Project\\data.ser");
+            fis = new FileInputStream("data.ser");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Serialize.class.getName()).log(Level.SEVERE, null, ex);
         }
