@@ -11,10 +11,17 @@ package ist412group6project;
  */
 public class ExpenseUI extends javax.swing.JFrame {
 
+    private ExpenseCntl parentCntl;
+    
     /**
      * Creates new form ExpenseUI
      */
     public ExpenseUI() {
+        initComponents();
+    }
+    
+    ExpenseUI(ExpenseCntl aThis, UserAccount theUser) {
+        parentCntl = aThis;
         initComponents();
     }
 
@@ -118,6 +125,7 @@ public class ExpenseUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        parentCntl.navBackToMainMenu();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
