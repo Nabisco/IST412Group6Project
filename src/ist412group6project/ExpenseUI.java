@@ -12,17 +12,23 @@ package ist412group6project;
 public class ExpenseUI extends javax.swing.JFrame {
 
     private ExpenseCntl parentCntl;
-    
+     private UserAccount userAccount;
+    private ExpenseCntl parentExpenseCntl = null;
     /**
      * Creates new form ExpenseUI
      */
     public ExpenseUI() {
+        
         initComponents();
     }
     
-    ExpenseUI(ExpenseCntl aThis, UserAccount theUser) {
+    ExpenseUI(ExpenseCntl aThis, UserAccount theUser, UserAccount userAcc) {
         parentCntl = aThis;
+        userAccount = userAcc;
+        
         initComponents();
+        
+         
     }
 
     /**
@@ -39,7 +45,7 @@ public class ExpenseUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
@@ -59,7 +65,8 @@ public class ExpenseUI extends javax.swing.JFrame {
 
         jLabel3.setText("Personal Notes:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Utilities", "Groceries", "Personal Spending" }));
+        jComboBox1.setToolTipText("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -71,6 +78,11 @@ public class ExpenseUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton2.setText("Submit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,6 +143,11 @@ public class ExpenseUI extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

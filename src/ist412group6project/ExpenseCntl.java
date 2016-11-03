@@ -16,7 +16,9 @@ public class ExpenseCntl {
 
     public ExpenseCntl(NavCntl theNavCntl, UserAccount theUser) {
         parentNavCntl = theNavCntl;
-        theExpenseUI = new ExpenseUI(this, theUser);   
+        theExpenseUI = new ExpenseUI(this, theUser);  
+        
+        
     }
     
     public void navToExpenseUI() {

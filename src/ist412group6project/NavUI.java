@@ -165,6 +165,7 @@ public class NavUI extends javax.swing.JFrame {
 
     private void newExpenseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newExpenseBtnActionPerformed
         // TODO add your handling code here:
+        parentNavCntl.navToExpenseUI();
     }//GEN-LAST:event_newExpenseBtnActionPerformed
 
     private void expenseSummaryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_expenseSummaryBtnActionPerformed
