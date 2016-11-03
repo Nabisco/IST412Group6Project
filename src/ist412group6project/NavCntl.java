@@ -49,7 +49,7 @@ public class NavCntl {
         theNavUI.setVisible(false);
     }
     
-    public void navToExpense(){
+    public void navToExpenseUI(){
         ExpenseCntl theExpenseCntl = new ExpenseCntl(this, currentUser);
         theExpenseCntl.navToExpenseUI();
         theNavUI.setVisible(false);

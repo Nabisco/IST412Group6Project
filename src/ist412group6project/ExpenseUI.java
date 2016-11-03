@@ -22,9 +22,9 @@ public class ExpenseUI extends javax.swing.JFrame {
         initComponents();
     }
     
-    ExpenseUI(ExpenseCntl aThis, UserAccount theUser, UserAccount userAcc) {
+    ExpenseUI(ExpenseCntl aThis, UserAccount theUser) {
         parentCntl = aThis;
-        userAccount = userAcc;
+        userAccount = theUser;
         
         initComponents();
         
