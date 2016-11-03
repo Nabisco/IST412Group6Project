@@ -49,6 +49,12 @@ public class NavCntl {
         theNavUI.setVisible(false);
     }
     
+    public void navToExpense(){
+        ExpenseCntl theExpenseCntl = new ExpenseCntl(this, currentUser);
+        theExpenseCntl.navToExpenseUI();
+        theNavUI.setVisible(false);
+    }
+    
     public void updateAccountTotValue() {
         try {
             theSerialization.openOutputStream();
@@ -60,5 +66,5 @@ public class NavCntl {
         }
         theNavUI.updateAccountTotValue();
     }
-
+    //trying to push
 }
