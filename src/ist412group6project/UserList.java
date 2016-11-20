@@ -5,6 +5,7 @@
  */
 package ist412group6project;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class UserList {
     Serialize theSerialization;
     Member theUser;
     
-    public UserList(Serialize serialization){  
+    public UserList(Serialize serialization) throws EOFException{  
        theSerialization = serialization;
 
         if (listOfUsers.isEmpty()) {
@@ -30,7 +31,7 @@ public class UserList {
        }
     }
 
-    private void createTestAccounts() {
+    private void createTestAccounts() throws EOFException{
         
         // Create the users and add them to the arraylist
         try {
