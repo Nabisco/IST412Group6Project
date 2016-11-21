@@ -145,7 +145,18 @@ public class ExpenseUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        double newAccountTotal = 0.0;
+        try {
+            
+            newAccountTotal = userAccount.getUserAccountTotal() - Double.parseDouble(jTextField2.getText());
+            userAccount.setUserAccountTotal(newAccountTotal);
+            
+            
+        } catch(NumberFormatException e) {
+            System.out.println("Not a number");
+        }
+        
+        System.out.println("New account total is: " + newAccountTotal);
        
     }//GEN-LAST:event_jButton2ActionPerformed
 

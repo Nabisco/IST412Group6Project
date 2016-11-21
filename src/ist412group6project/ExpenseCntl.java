@@ -21,6 +21,8 @@ public class ExpenseCntl {
         
     }
     
+    
+    
     public void navToExpenseUI() {
         theExpenseUI.setVisible(true);
         theExpenseUI.setLocationRelativeTo(null);
@@ -28,6 +30,8 @@ public class ExpenseCntl {
     
     public void navBackToMainMenu() {
         theExpenseUI.dispose();
+        parentNavCntl.updateAccountTotValue();
+        parentNavCntl.updateAccountTotValue();
         parentNavCntl.showNavControl();
     }
     //

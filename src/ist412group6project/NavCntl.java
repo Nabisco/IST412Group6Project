@@ -58,8 +58,8 @@ public class NavCntl {
     public void updateAccountTotValue() {
         try {
             theSerialization.openOutputStream();
-                theSerialization.outputStream.writeObject(currentUser);
-                theSerialization.closeOutputStream();
+            theSerialization.outputStream.writeObject(currentUser);
+            theSerialization.closeOutputStream();
             
         } catch (IOException ex) {
             Logger.getLogger(NavCntl.class.getName()).log(Level.SEVERE, null, ex);
