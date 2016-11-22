@@ -25,6 +25,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="weeklyBudgetText" min="-2" pref="92" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="weeklyBudgetLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
@@ -36,19 +38,27 @@
                           <Component id="jLabel2" max="32767" attributes="0"/>
                           <Component id="jLabel3" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="69" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jSlider3" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jSlider2" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jSlider1" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="foodBudget" min="-2" max="-2" attributes="0"/>
+                          <Component id="utilitesLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="personalLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                       <Component id="jTextField1" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="totalLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,23 +66,32 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="totalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Component id="weeklyBudgetText" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="weeklyBudgetText" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="weeklyBudgetLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="jSlider2" min="-2" max="-2" attributes="0"/>
+                  <Component id="foodBudget" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jSlider3" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="utilitesLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+                  <Component id="personalLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="74" max="32767" attributes="0"/>
           </Group>
@@ -116,6 +135,31 @@
     <Component class="javax.swing.JSlider" name="jSlider2">
     </Component>
     <Component class="javax.swing.JSlider" name="jSlider3">
+    </Component>
+    <Component class="javax.swing.JLabel" name="totalLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="$1000"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="weeklyBudgetLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="$100"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="foodBudget">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="$33"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="utilitesLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="$33"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="personalLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="$33"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
