@@ -27,6 +27,7 @@ public class UserProfileCntl {
         userProfileUI = new UserProfileUI(this, userName);
         userProfileUI.setVisible(true);
         userProfileUI.setLocationRelativeTo(null);
+        userProfileUI.setSize(300, 450);
         
     }
     
