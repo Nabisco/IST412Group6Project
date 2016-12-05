@@ -54,14 +54,19 @@ public class ExpenseCalender implements Serializable{
         
     }
     
-    public ArrayList<Double> getExpensesOnSpecificDay(String month, transactionType type) {
+    public Double getExpensesCategory(String month, transactionType type) {
+        double totalExpenses = 0.00;
         if( year.get(month).containsKey(type)) {
-            return year.get(month).get(type);
+            //return year.get(month).get(type);
+            for(Double d : year.get(month).get(type)) {
+                totalExpenses += d;
+            }
+            
+            return totalExpenses;
         } 
         else {
-            ArrayList<Double> emptyList = new ArrayList<>();
-            emptyList.add(0.00);
-            return emptyList;
+            
+            return 0.0;
         }
     }
 
