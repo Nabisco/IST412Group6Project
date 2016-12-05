@@ -5,6 +5,8 @@
  */
 package ist412group6project;
 
+import java.util.Calendar;
+
 /**
  *
  * @author gme50
@@ -12,6 +14,7 @@ package ist412group6project;
 public class BudgetStatistics extends javax.swing.JFrame {
 
     private BudgetStatisticsCntrl parentCntl;
+    private UserAccount userAccount;
     
     /**
      * Creates new form BudgetStatistics
@@ -22,8 +25,25 @@ public class BudgetStatistics extends javax.swing.JFrame {
 
     BudgetStatistics(BudgetStatisticsCntrl aThis, UserAccount theUser) {
         parentCntl = aThis;
+        userAccount = theUser;
         initComponents();
         jLabel5.setText(Double.toString(theUser.getUserAccountTotal()));
+        Calendar c =  Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        updateBudgetStats(day);
+        
+    }
+    
+    public void updateBudgetStats (int day) {
+        double totalExpenses = 0.00;
+        totalExpenses = userAccount.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.GROCERY)
+                + userAccount.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.PERSONAL)
+                + userAccount.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.UTILITY);
+        
+        double avgTotExpenses = totalExpenses/day;
+        
+        jLabel6.setText(Double.toString(totalExpenses));
+        jLabel7.setText(Double.toString(avgTotExpenses));
     }
 
     /**
