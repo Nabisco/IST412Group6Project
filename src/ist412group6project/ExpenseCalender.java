@@ -14,45 +14,49 @@ import java.util.HashMap;
  * @author gme50
  */
 public class ExpenseCalender implements Serializable{
-    private HashMap<String, HashMap<Integer, ArrayList<Double>>> year; //outer key is for month, nested hashmap contains a keyset of dates and an arraylist of expenses
+    private HashMap<String, HashMap<transactionType, ArrayList<Double>>> year; //outer key is for month, nested hashmap contains a keyset of dates and an arraylist of expenses
     private String userAccount;
+    public enum transactionType {
+        UTILITY, GROCERY, PERSONAL;
+    }
+    
 
 
     public ExpenseCalender(String newAccount) {
         userAccount = newAccount;
         
         year = new HashMap<>();
-        HashMap<Integer, ArrayList<Double>> emptyMonthMap = new HashMap();
-        year.put("January", emptyMonthMap);
-        year.put("February", emptyMonthMap);
-        year.put("March", emptyMonthMap);
-        year.put("April", emptyMonthMap);
+        HashMap<transactionType, ArrayList<Double>> emptyMonthMap = new HashMap();
+        year.put("Jan", emptyMonthMap);
+        year.put("Feb", emptyMonthMap);
+        year.put("Mar", emptyMonthMap);
+        year.put("Apr", emptyMonthMap);
         year.put("May", emptyMonthMap);
-        year.put("June", emptyMonthMap);
-        year.put("July", emptyMonthMap);
-        year.put("August", emptyMonthMap);
-        year.put("September", emptyMonthMap);
-        year.put("October", emptyMonthMap);
-        year.put("November", emptyMonthMap);
-        year.put("December", emptyMonthMap);
+        year.put("Jun", emptyMonthMap);
+        year.put("Jul", emptyMonthMap);
+        year.put("Aug", emptyMonthMap);
+        year.put("Sep", emptyMonthMap);
+        year.put("Oct", emptyMonthMap);
+        year.put("Nov", emptyMonthMap);
+        year.put("Dec", emptyMonthMap);
         
     }
     
-    public void addExpenseToMonthMap(String month, Integer day, Double expense) {
-        if(!year.get(month).containsKey(day)){
+    public void addExpenseToMonthMap(String month, transactionType type, Double expense) {
+        if(!year.get(month).containsKey(type)){
             ArrayList<Double> firstDayExpense = new ArrayList<>();
             firstDayExpense.add(expense);
-            year.get(month).put(day, firstDayExpense);
+            year.get(month).put(type, firstDayExpense);
         }
         else {
-            year.get(month).get(day).add(expense);
+            year.get(month).get(type).add(expense);
         }
         
     }
     
-    public ArrayList<Double> getExpensesOnSpecificDay(String month, Integer day) {
-        if( year.get(month).containsKey(day)) {
-            return year.get(month).get(day);
+    public ArrayList<Double> getExpensesOnSpecificDay(String month, transactionType type) {
+        if( year.get(month).containsKey(type)) {
+            return year.get(month).get(type);
         } 
         else {
             ArrayList<Double> emptyList = new ArrayList<>();

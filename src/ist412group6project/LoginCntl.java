@@ -5,6 +5,7 @@
  */
 package ist412group6project;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +32,7 @@ public class LoginCntl {
 }
 
   
-    public UserList getUserList(){
+    public UserList getUserList() throws EOFException{
         
         if(theUserList == null) {
             
@@ -42,7 +43,7 @@ public class LoginCntl {
     return theUserList;
     }
     
-    protected boolean requestAuthenticate(String theUsername, char[] thePassword){
+    protected boolean requestAuthenticate(String theUsername, char[] thePassword) throws EOFException{
         boolean authenticated = false;
         
         

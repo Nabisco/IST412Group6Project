@@ -6,6 +6,9 @@
 package ist412group6project;
 
 import java.awt.Color;
+import java.io.EOFException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -252,13 +255,16 @@ public class LoginUI extends javax.swing.JFrame {
           
          String tmpUsername = this.jTextField1.getText();
         char[] tmpPassword = this.jPasswordField1.getPassword();
-        if(this.parentLoginCntl.requestAuthenticate(tmpUsername, tmpPassword)){ 
-            
-        }else{
-            JOptionPane.showMessageDialog(this, "Email or Password Are Incorrect");
-            this.jTextField1.setText("");
-            this.jPasswordField1.setText("");
-        }
+              try {
+                  if(this.parentLoginCntl.requestAuthenticate(tmpUsername, tmpPassword)){
+                      
+                  }else{
+                      JOptionPane.showMessageDialog(this, "Email or Password Are Incorrect");
+                      this.jTextField1.setText("");
+                      this.jPasswordField1.setText("");
+                  }     } catch (EOFException ex) {
+                  Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
+              }
           
           }
        

@@ -5,6 +5,10 @@
  */
 package ist412group6project;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bch5177
@@ -45,7 +49,7 @@ public class ExpenseUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
@@ -65,7 +69,7 @@ public class ExpenseUI extends javax.swing.JFrame {
 
         jLabel3.setText("Personal Notes:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Utilities", "Groceries", "Personal Spending" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Utilities", "Groceries", "Personal Spending" }));
         jComboBox1.setToolTipText("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,8 +152,26 @@ public class ExpenseUI extends javax.swing.JFrame {
         double newAccountTotal = 0.0;
         try {
             
+            Calendar cal = Calendar.getInstance();
+            System.out.println(new SimpleDateFormat("MMM").format(cal.getTime()));
+            String comboBoxSelection = jComboBox1.getSelectedItem().toString();
+            
+            switch(comboBoxSelection){
+                case "Utilities": userAccount.getExpenceCallender().addExpenseToMonthMap(new SimpleDateFormat("MMM").format(cal.getTime()), ExpenseCalender.transactionType.UTILITY, Double.parseDouble(jTextField2.getText()));
+                break;
+                
+                case "Groceries": userAccount.getExpenceCallender().addExpenseToMonthMap(new SimpleDateFormat("MMM").format(cal.getTime()), ExpenseCalender.transactionType.GROCERY, Double.parseDouble(jTextField2.getText()));
+                break;
+                
+                case "Personal Spending": userAccount.getExpenceCallender().addExpenseToMonthMap(new SimpleDateFormat("MMM").format(cal.getTime()), ExpenseCalender.transactionType.PERSONAL, Double.parseDouble(jTextField2.getText()));
+                break;
+            }
+                    
             newAccountTotal = userAccount.getUserAccountTotal() - Double.parseDouble(jTextField2.getText());
             userAccount.setUserAccountTotal(newAccountTotal);
+            JOptionPane.showMessageDialog(null, "Expense submitted!");
+            parentCntl.navBackToMainMenu();
+            this.dispose();
             
             
         } catch(NumberFormatException e) {

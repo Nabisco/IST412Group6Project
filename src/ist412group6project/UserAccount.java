@@ -16,7 +16,7 @@ public abstract class UserAccount implements Serializable{
     
     private String username = "";
     private char[] password = null;
-    //private ExpenseCalender expenceCallender = null;
+    private ExpenseCalender expenceCallender = null;
     private double userAccountTotal;
     
     
@@ -29,7 +29,7 @@ public abstract class UserAccount implements Serializable{
     public UserAccount(String newUsername, char[] newPassword){
         username = newUsername;
         password = newPassword;
-        //expenceCallender = new ExpenseCalender("Checking");
+        expenceCallender = new ExpenseCalender("Checking");
         userAccountTotal = 0.00;
     }
     
@@ -71,6 +71,20 @@ public abstract class UserAccount implements Serializable{
      */
     public void setUserAccountTotal(double userAccountTotal) {
         this.userAccountTotal = userAccountTotal;
+    }
+
+    /**
+     * @return the expenceCallender
+     */
+    public ExpenseCalender getExpenceCallender() {
+        return expenceCallender;
+    }
+
+    /**
+     * @param expenceCallender the expenceCallender to set
+     */
+    public void setExpenceCallender(ExpenseCalender expenceCallender) {
+        this.expenceCallender = expenceCallender;
     }
 
     

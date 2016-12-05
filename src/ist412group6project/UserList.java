@@ -37,11 +37,14 @@ public class UserList {
         try {
             theSerialization.openInputStream();
             Object o;
-            while((o = theSerialization.inputStream.readObject()) != null) {
+            
+                while((o = theSerialization.inputStream.readObject()) != null) {
                 UserAccount savedUser = (UserAccount)o;
                 listOfUsers.add(savedUser);
                 
-            }
+                }
+            
+            
                 theSerialization.closeInputStream();
             } catch (IOException | ClassNotFoundException ex) {
                 Logger.getLogger(UserList.class.getName()).log(Level.SEVERE, null, ex);
@@ -68,7 +71,7 @@ public class UserList {
                }
            }
            theSerialization.closeOutputStream();
-        } 
+        }
     }
        
        
