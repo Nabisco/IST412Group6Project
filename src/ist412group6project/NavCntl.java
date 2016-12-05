@@ -54,6 +54,11 @@ public class NavCntl {
         theExpenseCntl.navToExpenseUI();
         theNavUI.setVisible(false);
     }
+    public void navToSetBudget(){
+        SetBudgetCntl theBudgetCntl = new SetBudgetCntl(this, currentUser);
+        theBudgetCntl.navToBudgetUI();
+        theNavUI.setVisible(false);
+    }
     
     public void updateAccountTotValue() {
         try {

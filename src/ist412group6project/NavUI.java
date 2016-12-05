@@ -174,6 +174,7 @@ public class NavUI extends javax.swing.JFrame {
 
     private void budgetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetBtnActionPerformed
         // TODO add your handling code here:
+        parentNavCntl.navToSetBudget();
     }//GEN-LAST:event_budgetBtnActionPerformed
 
     private void userProfileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userProfileBtnActionPerformed
