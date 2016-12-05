@@ -22,4 +22,10 @@ public class SetBudgetCntl {
        budgetUI.setVisible(true);
        budgetUI.setLocationRelativeTo(null);
     }
+    
+    public void navBackToMainMenu(){
+        budgetUI.dispose();
+      //  parentNavCntl.updateAccountTotValue();
+        parentNavCntl.showNavControl();
+    }
 }
