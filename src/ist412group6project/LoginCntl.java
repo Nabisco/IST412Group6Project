@@ -5,6 +5,7 @@
  */
 package ist412group6project;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,11 +32,15 @@ public class LoginCntl {
 }
 
   
-    public UserList getUserList(){
+    public UserList getUserList() {
         
         if(theUserList == null) {
             
-            theUserList = new UserList(theSerialization);
+            try {
+                theUserList = new UserList(theSerialization);
+            } catch (EOFException ex) {
+                Logger.getLogger(LoginCntl.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }
     
