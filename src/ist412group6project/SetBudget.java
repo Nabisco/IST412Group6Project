@@ -21,8 +21,16 @@ public class SetBudget extends javax.swing.JFrame {
         this.user = user; 
         
         initComponents();
+        updateUserExpenses();
+    }
+    
+    public void updateUserExpenses() {
+        foodTextField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.GROCERY).toString());
+        utilitiesTextField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.UTILITY).toString());
+        personalTextField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.PERSONAL).toString());
       
     }
+    
     public SetBudget(){
         initComponents();
     }
