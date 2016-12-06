@@ -24,6 +24,10 @@ public class SetBudget extends javax.swing.JFrame {
         updateUserExpenses();
     }
     
+     public SetBudget(){
+        initComponents();
+    }
+    
     public void updateUserExpenses() {
         foodTextField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.GROCERY).toString());
         utilitiesTextField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.UTILITY).toString());
@@ -31,9 +35,16 @@ public class SetBudget extends javax.swing.JFrame {
       
     }
     
-    public SetBudget(){
-        initComponents();
+    public void calculateBalance(){
+        double tempIncome = Double.parseDouble(incomeTextField.getText());
+        double tempFood =   Double.parseDouble(foodTextField.getText());
+        double tempUtil =   Double.parseDouble( utilitiesTextField.getText());
+        double tempPersonal =  Double.parseDouble(personalTextField.getText());
+        double tempbalance  = (tempIncome - (tempFood + tempUtil + tempPersonal));
+        this.balanceLabel.setText("$" + Double.toString(tempbalance));
     }
+    
+   
 
 
     /**
@@ -57,6 +68,7 @@ public class SetBudget extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         balanceLabel = new javax.swing.JLabel();
         homeButton = new javax.swing.JButton();
+        checkButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +84,12 @@ public class SetBudget extends javax.swing.JFrame {
 
         jLabel5.setText("Monthly Income:");
 
+        incomeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incomeTextFieldActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Remaining Balance:");
 
         balanceLabel.setText("Balance");
@@ -80,6 +98,13 @@ public class SetBudget extends javax.swing.JFrame {
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeButtonActionPerformed(evt);
+            }
+        });
+
+        checkButton.setText("Check Balance");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
             }
         });
 
@@ -102,7 +127,7 @@ public class SetBudget extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(personalTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                                .addComponent(personalTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -113,12 +138,13 @@ public class SetBudget extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(balanceLabel)))
+                        .addComponent(balanceLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(homeButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(checkButton)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(homeButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +170,9 @@ public class SetBudget extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(personalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(homeButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(homeButton)
+                    .addComponent(checkButton))
                 .addContainerGap())
         );
 
@@ -154,6 +182,15 @@ public class SetBudget extends javax.swing.JFrame {
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
       controller.navBackToMainMenu();
     }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void incomeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_incomeTextFieldActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        // TODO add your handling code here:
+        calculateBalance();
+    }//GEN-LAST:event_checkButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +229,7 @@ public class SetBudget extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel balanceLabel;
+    private javax.swing.JButton checkButton;
     private javax.swing.JTextField foodTextField;
     private javax.swing.JButton homeButton;
     private javax.swing.JTextField incomeTextField;

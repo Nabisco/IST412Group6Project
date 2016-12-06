@@ -28,4 +28,6 @@ public class SetBudgetCntl {
       //  parentNavCntl.updateAccountTotValue();
         parentNavCntl.showNavControl();
     }
+    
+    
 }
