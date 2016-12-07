@@ -18,6 +18,7 @@ public abstract class UserAccount implements Serializable{
     private char[] password = null;
     private ExpenseCalender expenceCallender = null;
     private double userAccountTotal;
+    private double monthlyIncome;
     
     
      public UserAccount(){
@@ -71,6 +72,7 @@ public abstract class UserAccount implements Serializable{
      */
     public void setUserAccountTotal(double userAccountTotal) {
         this.userAccountTotal = userAccountTotal;
+        
     }
 
     /**
@@ -85,6 +87,20 @@ public abstract class UserAccount implements Serializable{
      */
     public void setExpenceCallender(ExpenseCalender expenceCallender) {
         this.expenceCallender = expenceCallender;
+    }
+
+    /**
+     * @return the monthlyIncome
+     */
+    public double getMonthlyIncome() {
+        return monthlyIncome;
+    }
+
+    /**
+     * @param monthlyIncome the monthlyIncome to set
+     */
+    public void setMonthlyIncome(double monthlyIncome) {
+        this.monthlyIncome = monthlyIncome;
     }
 
     
