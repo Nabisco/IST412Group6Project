@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -72,8 +73,8 @@ public class ExpenseUI extends javax.swing.JFrame {
 
         jLabel3.setText("Custom Expense Type:");
 
+        expenseComboBox.setEditable(true);
         expenseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Utilities", "Groceries", "Savings" }));
-        expenseComboBox.setToolTipText("");
         expenseComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 expenseComboBoxActionPerformed(evt);
@@ -84,6 +85,12 @@ public class ExpenseUI extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        customExpenseField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customExpenseFieldActionPerformed(evt);
             }
         });
 
@@ -169,7 +176,10 @@ public class ExpenseUI extends javax.swing.JFrame {
                 case "Groceries": userAccount.getExpenceCallender().addExpenseToMonthMap(new SimpleDateFormat("MMM").format(cal.getTime()), ExpenseCalender.transactionType.GROCERY, Double.parseDouble(jTextField2.getText()));
                 break;
                 
-                case "Savings": userAccount.getExpenceCallender().addExpenseToMonthMap(new SimpleDateFormat("MMM").format(cal.getTime()), ExpenseCalender.transactionType.PERSONAL, Double.parseDouble(jTextField2.getText()));
+                case "Savings": userAccount.getExpenceCallender().addExpenseToMonthMap(new SimpleDateFormat("MMM").format(cal.getTime()), ExpenseCalender.transactionType.SAVING, Double.parseDouble(jTextField2.getText()));
+                break;
+                
+                case "Custom": userAccount.getExpenceCallender().addExpenseToMonthMap(new SimpleDateFormat("MMM").format(cal.getTime()), ExpenseCalender.transactionType.CUSTOM, Double.parseDouble(jTextField2.getText()));
                 break;
             }
                     
@@ -191,7 +201,13 @@ public class ExpenseUI extends javax.swing.JFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
         expenseComboBox.addItem(customExpenseField.getText());
+        JOptionPane.showMessageDialog(null, "Added!");
+
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void customExpenseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customExpenseFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customExpenseFieldActionPerformed
 
     /**
      * @param args the command line arguments
