@@ -17,7 +17,7 @@ public class ExpenseCalender implements Serializable{
     private HashMap<String, HashMap<transactionType, ArrayList<Double>>> year; //outer key is for month, nested hashmap contains a keyset of dates and an arraylist of expenses
     private String userAccount;
     public enum transactionType {
-        UTILITY, GROCERY, PERSONAL;
+        UTILITY, GROCERY, SAVING, CUSTOM;
     }
     
 
