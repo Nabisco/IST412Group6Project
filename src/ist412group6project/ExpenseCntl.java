@@ -34,5 +34,7 @@ public class ExpenseCntl {
         parentNavCntl.updateAccountTotValue();
         parentNavCntl.showNavControl();
     }
+    
+  
     //
 }

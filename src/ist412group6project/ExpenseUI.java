@@ -6,8 +6,13 @@
 package ist412group6project;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -19,6 +24,7 @@ public class ExpenseUI extends javax.swing.JFrame {
 
     private ExpenseCntl parentCntl;
      private UserAccount userAccount;
+     
     private ExpenseCntl parentExpenseCntl = null;
     /**
      * Creates new form ExpenseUI
@@ -53,7 +59,7 @@ public class ExpenseUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        expenseComboBox = new javax.swing.JComboBox<>();
+        expenseComboBox = new javax.swing.JComboBox<String>();
         jButton2 = new javax.swing.JButton();
         customExpenseField = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
@@ -73,8 +79,14 @@ public class ExpenseUI extends javax.swing.JFrame {
 
         jLabel3.setText("Custom Expense Type:");
 
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         expenseComboBox.setEditable(true);
-        expenseComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Utilities", "Groceries", "Savings" }));
+        expenseComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Utilities", "Groceries", "Savings" }));
         expenseComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 expenseComboBoxActionPerformed(evt);
@@ -94,7 +106,7 @@ public class ExpenseUI extends javax.swing.JFrame {
             }
         });
 
-        addBtn.setText("Add");
+        addBtn.setText("Add New Expense Type");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
@@ -109,8 +121,6 @@ public class ExpenseUI extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
                 .addGap(13, 13, 13))
             .addGroup(layout.createSequentialGroup()
@@ -121,9 +131,11 @@ public class ExpenseUI extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2)
-                    .addComponent(expenseComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(customExpenseField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField2)
+                        .addComponent(expenseComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(customExpenseField, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,11 +153,12 @@ public class ExpenseUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(customExpenseField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(addBtn))
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -182,7 +195,14 @@ public class ExpenseUI extends javax.swing.JFrame {
                 case "Custom": userAccount.getExpenceCallender().addExpenseToMonthMap(new SimpleDateFormat("MMM").format(cal.getTime()), ExpenseCalender.transactionType.CUSTOM, Double.parseDouble(jTextField2.getText()));
                 break;
             }
-                    
+            
+            
+            BufferedWriter writer = new BufferedWriter(new FileWriter("report.txt",true));
+            writer.write( "ExpenseType:   "+ expenseComboBox.getSelectedItem().toString()+"    Expense Amount:  $" +jTextField2.getText());
+            writer.newLine(); 
+            writer.newLine(); 
+            
+            writer.close();
             newAccountTotal = userAccount.getUserAccountTotal() - Double.parseDouble(jTextField2.getText());
             userAccount.setUserAccountTotal(newAccountTotal);
             JOptionPane.showMessageDialog(null, "Expense submitted!");
@@ -192,6 +212,9 @@ public class ExpenseUI extends javax.swing.JFrame {
             
         } catch(NumberFormatException e) {
             System.out.println("Not a number");
+              JOptionPane.showMessageDialog(null, "Please Enter A Numerical Value");
+        } catch (IOException ex) {
+            Logger.getLogger(ExpenseUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         System.out.println("New account total is: " + newAccountTotal);
@@ -208,6 +231,10 @@ public class ExpenseUI extends javax.swing.JFrame {
     private void customExpenseFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customExpenseFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_customExpenseFieldActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments

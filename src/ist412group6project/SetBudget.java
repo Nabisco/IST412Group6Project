@@ -45,11 +45,11 @@ public class SetBudget extends javax.swing.JFrame {
         personalTextField.setText(Double.toString(savingsBudgetTot));
         utilitiesExpensesField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.UTILITY).toString());
         groceryExpensesField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.GROCERY).toString());
-        savingsDepositsField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.PERSONAL).toString());
+        savingsDepositsField.setText(user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.CUSTOM).toString());
         
         double totalMonthlyExpenses = user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.UTILITY) 
                 + user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.GROCERY)
-                + user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.PERSONAL);
+                + user.getExpenceCallender().getExpensesCategory("Dec", ExpenseCalender.transactionType.CUSTOM);
         
         monthlyExpensesField.setText(Double.toString(totalMonthlyExpenses));
     }
@@ -160,6 +160,11 @@ public class SetBudget extends javax.swing.JFrame {
         });
 
         groceryExpensesField.setEditable(false);
+        groceryExpensesField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                groceryExpensesFieldActionPerformed(evt);
+            }
+        });
 
         utilitiesExpensesField.setEditable(false);
 
@@ -243,11 +248,9 @@ public class SetBudget extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(personalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(savingsDepositsLabel)
-                            .addComponent(savingsDepositsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(savingsDepositsLabel)
+                        .addComponent(savingsDepositsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(homeButton)
@@ -274,6 +277,10 @@ public class SetBudget extends javax.swing.JFrame {
     private void monthlyExpensesFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlyExpensesFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_monthlyExpensesFieldActionPerformed
+
+    private void groceryExpensesFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_groceryExpensesFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_groceryExpensesFieldActionPerformed
 
     /**
      * @param args the command line arguments
